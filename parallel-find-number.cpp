@@ -5,6 +5,15 @@
 #include <cstdlib>
 #include <functional>
 
+void printArray(double array[6][10], int n_row, int n_col){
+    for(int a = 0; a < n_row; a++){
+        for(int b = 0; b < n_col; b++){
+          std::cout << array[a][b] << " ";
+        }
+        std::cout << std::endl;
+      }   
+}
+
 std::vector<int> generateRandomArray(int N) {
     std::vector<int> arr;
     for (int i = 0; i < N; ++i) {
@@ -25,6 +34,10 @@ void searchInThread(const std::vector<int>& arr, int start, int end, int key, st
 int main() {
     srand(static_cast<unsigned>(time(0)));
     std::vector<int> sizes = {100, 500, 1000, 2000, 5000, 10000};
+
+    double size_thread_comparison [6][10];
+    int size_thread_comparison_row_idx = 0;
+
 
     for (int N : sizes) {
         std::vector<int> randomArray = generateRandomArray(N);
@@ -55,8 +68,13 @@ int main() {
             clock_t end = clock();
             double elapsedTime = static_cast<double>(end - start) / CLOCKS_PER_SEC;
             std::cout << "Array Size: " << N << ", Number of Threads: " << numThreads << ", Execution Time: " << elapsedTime << " seconds, Key Found: " << std::boolalpha << (found > 0) << std::endl;
+            size_thread_comparison[size_thread_comparison_row_idx][numThreads-1] = elapsedTime;
         }
+        size_thread_comparison_row_idx++;
     }
+
+    printArray(size_thread_comparison, 6, 10);
+
 
     return 0;
 }
