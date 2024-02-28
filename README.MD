@@ -6,3 +6,8 @@
 Find the sum of elements in the array    
 Search a key element in the array  
 
+
+## Running and setting up OpenMP in Linux
+1. `sudo apt-get install libomp-dev`
+2. Create the file
+4. `g++ -o <executable_file_name>  -fopenmp <file_name>`
