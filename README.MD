@@ -11,3 +11,4 @@ Search a key element in the array
 1. `sudo apt-get install libomp-dev`
 2. Create the file
 4. `g++ -o <executable_file_name>  -fopenmp <file_name>`
+5. Run `./<executable_file_name>`
